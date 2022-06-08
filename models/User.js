@@ -4,6 +4,12 @@ const userSchema = new mongoose.Schema({
    name: String,
    username: String,
    passwordHash: String,
+   contacts: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'Contact'
+      }
+   ]
 })
 
 userSchema.set('toJSON',{

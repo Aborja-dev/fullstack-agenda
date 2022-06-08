@@ -1,0 +1,7 @@
+PUT http://localhost:3002/api/contacts/62904e2f34a7877257dc4ce0 HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "name": "Ankahara Borja", 
+  "number": "040-123456"
+}

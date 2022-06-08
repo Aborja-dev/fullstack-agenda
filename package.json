@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest loginApi.test.js --verbose --runInBand",
+    "test": "cross-env NODE_ENV=test jest contactApi.test.js --verbose --runInBand",
     "dev": "cross-env NODE_ENV=development nodemon index.js ",
     "start": "cross-env NODE_ENV=production node index.js ",
     "test:watch": "npm run test -- --watch"

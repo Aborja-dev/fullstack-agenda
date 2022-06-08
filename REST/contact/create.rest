@@ -1,0 +1,9 @@
+POST http://localhost:3002/api/contacts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IktpbGxlciIsImlkIjoiNjI5NDQzMzNhMmU5OGJlMDg4YWJiNzc0IiwiaWF0IjoxNjU0NjE5NDkwfQ.w48leBfZvd6pdqwWzl61DrqOAXNnOgZ0nL6EetyemRI
+
+{ 
+  "name": "Abraham Borjia", 
+  "number": "040-123456",
+  "id": "62944333a2e98be088abb774"
+}

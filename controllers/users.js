@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 
 usersRouter.get('/', async (request, response) => {
-   const users = await User.find({})
+   const users = await User.find({}).populate('contacts', {name: 1})
    return response.status(200).json(users)
 })
 usersRouter.post('/', (request, response) => {

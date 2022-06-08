@@ -1,9 +1,10 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
-const saveUsers = async (users) => {
+const saveUsers = (users) => {
    let promises = []
-   users.forEach(async (_user) => {
+   users.forEach( (_user) => {
       const promise = bcrypt
          .hash(_user.password, 10)
          .then(passwordHash=>{
@@ -27,11 +28,28 @@ const saveAll = async (array, Schema) => {
    });
    return Promise.all(promises)
 }
-
-const FoundInDB = async (Schema)=>{
+const FoundInDB = async (Schema, prop=null)=>{
    const all = await Schema.find({})
-   return all
+   return prop
+      ?all.map((el)=>el[prop])
+      :all.map(a=>a.toJSON())
+}
+const getAnId = async (Schema, seed=10)=>{
+   const all = await Schema.find({})
+   const index =  Math.floor((Math.random() * seed)) % all.length
+   const doc = all[index]
+   return doc.id
+}
+
+const loginUser = async (_user)=>{
+   const user = await User.findOne({username: _user.username})
+   const userForToken = {
+      username: user.username,
+      id: user._id
+   }
+   const token = jwt.sign(userForToken, process.env.SECRET)
+   return {token}
 }
 
 
-module.exports = { FoundInDB, saveAll, saveUsers}
+module.exports = { FoundInDB, saveAll, saveUsers, getAnId, loginUser}
